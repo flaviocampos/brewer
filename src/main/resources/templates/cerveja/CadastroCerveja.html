@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="'layout/LayoutPadrao'" lang="pt">
-<head></head>
+<head><title>Cadastro de Cerveja</title></head>
 <body>
 	<section layout:fragment="conteudo">
 		<div class="page-header">
@@ -44,14 +44,22 @@
 
 				<div class="row">
 					<div class="col-sm-3 form-group">
-						<label for="input-cerveja-estilo">Estilo</label> <select id="input-cerveja-estilo" class="form-control">
-							<option value="">Selecione o estilo</option>
-							<option value="1">Pale lager</option>
-						</select>
+						<label for="input-cerveja-estilo">Estilo</label>
+						<div class="bw-field-action">
+							<select id="input-cerveja-estilo" class="form-control">
+								<option value="">Selecione o estilo</option>
+								<option value="1">Pale lager</option>
+							</select>
+							<div class="bw-field-action__icon">
+								<a href="#" data-toggle="modal" data-target="#modalCadastroRapidoEstilo"> <i class="glyphicon glyphicon-plus-sign bw-glyphicon-large"></i>
+								</a>
+							</div>
+						</div>
 					</div>
 
 					<div class="col-sm-3 form-group">
-						<label for="input-cerveja-sabor">Sabor</label> <select id="input-cerveja-sabor" class="form-control">
+						<label for="input-cerveja-sabor">Sabor</label> 
+						<select id="input-cerveja-sabor" class="form-control">
 							<option value="">Selecione o sabor</option>
 							<option value="1">Adocicada</option>
 						</select>
@@ -97,7 +105,7 @@
 					</div>
 
 					<div class="col-sm-3 form-group">
-						<label for="input-cerveja-estoque">Estoque</label> <input id="input-cerveja-estoque" type="text" class="form-control js-plain"  />
+						<label for="input-cerveja-estoque">Estoque</label> <input id="input-cerveja-estoque" type="text" class="form-control js-plain" />
 					</div>
 				</div>
 
@@ -108,6 +116,8 @@
 
 			</form>
 		</div>
+		
+		<div th:replace="estilo/CadastroRapidoEstilo :: modal"></div>
 
 	</section>
 </body>

@@ -1,0 +1,36 @@
+/* 
+#############################################################################
+# Utilidades
+#############################################################################
+*/
+
+
+.bw-glyphicon-large{
+	font-size: 18px;
+}
+
+
+/* 
+#############################################################################
+# Componentes
+#############################################################################
+*/
+
+/*  Field Action*/
+
+.bw-field-action{
+display: flex;	
+	
+}
+
+.bw-field-action__icon{
+	
+	margin: 6px 0 0 5px;
+}
+
+.bw-top5 { margin-top:5px; }
+.bw-top7 { margin-top:7px; }
+.bw-top10 { margin-top:10px; }
+.bw-top15 { margin-top:15px; }
+.bw-top17 { margin-top:17px; }
+.bw-top30 { margin-top:30px; }
