@@ -1,23 +1,30 @@
 package com.algaworks.brewer.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity(name = "estilo")
 public class Estilo implements Serializable {
 
 
 	private static final long serialVersionUID = 1L;
+	
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
 	private String nome;
+	
+	@OneToMany(mappedBy = "estilo")
+	private List<Cerveja> cervejas;
 
 	public Long getCodigo() {
 		return codigo;
@@ -58,6 +65,14 @@ public class Estilo implements Serializable {
 		} else if (!codigo.equals(other.codigo))
 			return false;
 		return true;
+	}
+
+	public List<Cerveja> getCervejas() {
+		return cervejas;
+	}
+
+	public void setCervejas(List<Cerveja> cervejas) {
+		this.cervejas = cervejas;
 	}
 
 	

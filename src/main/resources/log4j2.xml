@@ -7,9 +7,11 @@
 			<PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %logger{36}: %msg%n" />
 		</Console>
 	</Appenders>
-	
+
 	<Loggers>
-		<Logger name="com.algaworks.brewer.controller" level="trace"/>
+		<Logger name="com.algaworks.brewer.controller" level="trace" />
+		<Logger name="org.hibernate.SQL" level="debug" />
+		<!-- Logger name="org.hibernate.type" level="debug"/-->
 	
 		<Root level="error">
 			<AppenderRef ref="Console" />
