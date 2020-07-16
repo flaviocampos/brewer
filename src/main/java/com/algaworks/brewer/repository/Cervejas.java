@@ -7,5 +7,7 @@ import com.algaworks.brewer.model.Cerveja;
 
 @Repository
 public interface Cervejas extends JpaRepository<Cerveja, Long> {
+	
+	
 
 }

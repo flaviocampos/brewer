@@ -26,7 +26,7 @@ public class CervejasController {
 	@RequestMapping("/cervejas/novo")
 	public String novo(Cerveja cerveja) {
 		
-		cervejas.findAll();
+		
 		logger.trace("Nivel trace CervejaController ");
 		//model.addAttribute(new Cerveja());
 		return "cerveja/CadastroCerveja";
