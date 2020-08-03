@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="'layout/LayoutPadrao'" lang="pt">
-<head><title>Cadastro de Cerveja</title></head>
+<head>
+<title>Cadastro de Cerveja</title>
+</head>
 <body>
 	<section layout:fragment="conteudo">
 		<div class="page-header">
@@ -28,8 +30,8 @@
 				 
 				<div class="row">
 					<div class="col-sm-3 form-group">
-						<label for="input-cerveja-sku">SKU</label> <input id="input-cerveja-sku" class="form-control" readonly="readonly" type="text"
-							th:field="*{sku}" placeholder="SKU">
+						<label for="input-cerveja-sku">SKU</label> 
+						<input id="input-cerveja-sku" class="form-control" type="text" 	th:field="*{sku}" placeholder="SKU">
 					</div>
 					<div class="col-sm-9 form-group">
 						<label for="input-cerveja-nome">Nome</label> <input id="input-cerveja-nome" type="text" th:field="*{nome}" class="form-control"
@@ -48,10 +50,11 @@
 						<div class="bw-field-action">
 							<select id="input-cerveja-estilo" class="form-control">
 								<option value="">Selecione o estilo</option>
-								<option value="1">Pale lager</option>
+								<option th:each="estilo : ${estilos}" th:value="${estilo.codigo}" th:text="|${estilo.codigo} - ${estilo.nome}|"></option>
 							</select>
 							<div class="bw-field-action__icon">
-								<a href="#" data-toggle="modal" data-target="#modalCadastroRapidoEstilo"> <i class="glyphicon glyphicon-plus-sign bw-glyphicon-large"></i>
+								<a href="#" data-toggle="modal" data-target="#modalCadastroRapidoEstilo"> <i
+									class="glyphicon glyphicon-plus-sign bw-glyphicon-large"></i>
 								</a>
 							</div>
 						</div>
@@ -59,16 +62,16 @@
 
 					<div class="col-sm-3 form-group">
 						<label for="input-cerveja-sabor">Sabor</label> 
-						<select id="input-cerveja-sabor" class="form-control">
+						<select id="input-cerveja-sabor" class="form-control" th:field="*{sabor}">
 							<option value="">Selecione o sabor</option>
-							<option value="1">Adocicada</option>
+							<option th:each="sabor : ${sabores}" th:value="${sabor}" th:text="${sabor.descricao}"></option>
 						</select>
 					</div>
 
 					<div class="col-sm-3 form-group">
 						<label for="input-cerveja-teor-alcoolico">Teor Alcoolico</label>
 						<div class="input-group">
-							<input id="input-cerveja-teor-alcoolico" type="text" class="form-control js-decimal" />
+							<input id="input-cerveja-teor-alcoolico" type="text" class="form-control js-decimal" th:field="*{teorAlcoolico}"/>
 							<div class="input-group-addon">%</div>
 						</div>
 					</div>
@@ -76,12 +79,13 @@
 					<div class="col-lg-3 col-sm-6 form-group">
 						<label for="input-cerveja-nacionalidade">Origem</label>
 						<div>
-							<div class="radio radio-inline">
-								<input type="radio" name="origem"> <label>Nacional</label>
-							</div>
-							<div class="radio radio-inline">
-								<input type="radio" name="origem"> <label>Internacional</label>
-							</div>
+							<th:block  th:each="origem : ${origens}">
+								<div class="radio radio-inline">
+									<input  th:id="|id_${origem}|" type="radio" th:value="${origem}" th:field="*{origem}">
+									<label th:for="|id_${origem}|" th:text="${origem.descricao}">descricao aqui</label>
+								</div>
+							</th:block>
+
 						</div>
 					</div>
 				</div>
@@ -89,23 +93,24 @@
 
 				<div class="row">
 					<div class="col-sm-3 form-group">
-						<label for="input-cerveja-preco">Preço unitário</label>
+						<label for="input-cerveja-valor">Valor unitário</label>
 						<div class="input-group">
 							<div class="input-group-addon">R$</div>
-							<input id="input-cerveja-preco" type="text" class="form-control js-decimal" />
+							<input id="input-cerveja-valor" type="text" class="form-control js-decimal" th:field="*{valor}"/>
 						</div>
 					</div>
 
 					<div class="col-sm-3 form-group">
 						<label for="input-cerveja-comissao">Comissão</label>
 						<div class="input-group">
-							<input id="input-cerveja-comissao" type="text" class="form-control js-decimal" />
+							<input id="input-cerveja-comissao" type="text" class="form-control js-decimal" th:field="*{comissao}"/>
 							<div class="input-group-addon">%</div>
 						</div>
 					</div>
 
 					<div class="col-sm-3 form-group">
-						<label for="input-cerveja-estoque">Estoque</label> <input id="input-cerveja-estoque" type="text" class="form-control js-plain" />
+						<label for="input-cerveja-quantidade-estoque">Estoque</label> 
+						<input id="input-cerveja-quantidade-estoque" type="text" class="form-control js-plain" th:field="*{quantidadeEstoque}"/>
 					</div>
 				</div>
 
@@ -116,7 +121,7 @@
 
 			</form>
 		</div>
-		
+
 		<div th:replace="estilo/CadastroRapidoEstilo :: modal"></div>
 
 	</section>

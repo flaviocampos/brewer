@@ -43,6 +43,7 @@ public class Cerveja implements Serializable {
 	@Column(name ="teor_alcoolico")
 	private BigDecimal teorAlcoolico;
 	
+	//@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal comissao;
 	
 	@Column(name = "quantidade_estoque")
