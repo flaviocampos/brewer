@@ -1,10 +1,7 @@
 $(function() {
 	var decimal = $('.js-decimal');
-	decimal.maskMoney({
-		 thousands: '.', //Define o separador de milhar como ponto
-		    decimal: ',' //Define o separador de decimal como vírgula
-	});
+	decimal.maskMoney({ decimal: ',',  thousands: '.' });
 	
 	var plain = $('.js-plain');
-	plain.maskMoney({ precision: 0 });
+	plain.maskMoney({ precision: 0, thousands: '.' });
 });
