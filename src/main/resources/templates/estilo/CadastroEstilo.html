@@ -13,20 +13,14 @@
 			</div>
 		</div>
 		<div class="container-fluid">
+			<th:block th:include="fragments/MensagemSucesso"></th:block>
+			<form method="post" class="form-vertical  js-form-loading" th:object="${estilo}">
+			<th:block th:include="fragments/MensagensErroValidacao"></th:block>
 
-			<!-- <div class="alert  alert-danger  alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<i class="fa  fa-exclamation-circle"></i> Já existe um cerveja com o nome informado.
-			</div> -->
-
-			<form method="post" class="form-vertical  js-form-loading">
-
-				<div class="row form-group">
+				<div class="row form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">
 					<div class="col-lg-12 col-mdg-12">
-						<label for="input-estilo-nome">Nome</label>   
-						<input id="input-estilo-nome" type="text" class="form-control">
+						<label for="input-estilo-nome" class="control-label">Nome</label>   
+						<input id="input-estilo-nome" type="text" th:field="*{nome}" class="form-control" autofocus="autofocus">
 					</div>
 				</div>
 

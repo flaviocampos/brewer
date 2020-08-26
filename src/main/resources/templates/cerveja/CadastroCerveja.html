@@ -23,7 +23,7 @@
 					<div class="col-sm-3 form-group" th:classappend="${#fields.hasErrors('sku')} ? has-error">
 						<label for="input-cerveja-sku" class="control-label">SKU</label> 
 						<input id="input-cerveja-sku" class="form-control" type="text" th:field="*{sku}"
-							placeholder="SKU">
+							placeholder="SKU" autofocus="autofocus">
 					</div>
 					<div class="col-sm-9 form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">
 						<label for="input-cerveja-nome" class="control-label">Nome</label> 

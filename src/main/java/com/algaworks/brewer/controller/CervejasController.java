@@ -28,12 +28,12 @@ public class CervejasController {
 	private Estilos estilos;
 	
 	@Autowired
-	private CadastroCervejaService cadastroCervejaSerice;	
+	private CadastroCervejaService cadastroCervejaService;	
 
 
 	@RequestMapping("/cervejas/novo")
 	public ModelAndView novo(Cerveja cerveja) {
-		logger.trace("Cerveja - novo - Aprender usar o log.");
+		logger.info("Cerveja - novo - Aprender usar o log.");
 
 		ModelAndView mv = new ModelAndView("cerveja/CadastroCerveja");
 		mv.addObject("sabores", Sabor.values());
@@ -46,7 +46,8 @@ public class CervejasController {
 	@RequestMapping(value = "/cervejas/novo", method = RequestMethod.POST)
 	public ModelAndView cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model,
 			RedirectAttributes attributes) {
-		System.out.println("Passou pelo cadastrar");
+
+		logger.info("Cerveja cadastrar.");
 
 		if (result.hasErrors()) {
 			// model.addAttribute(cerveja);
@@ -54,7 +55,7 @@ public class CervejasController {
 			return novo(cerveja);
 		}
 
-		cadastroCervejaSerice.salvar(cerveja);
+		cadastroCervejaService.salvar(cerveja);
 		attributes.addFlashAttribute("mensagem", "Cerveja salva com sucesso!");
 
 		return new ModelAndView("redirect:/cervejas/novo");

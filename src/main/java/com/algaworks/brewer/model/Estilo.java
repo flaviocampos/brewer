@@ -8,19 +8,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity(name = "estilo")
 public class Estilo implements Serializable {
 
 
-	private static final long serialVersionUID = 1L;
-	
-	
+	private static final long serialVersionUID = 1L;	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
+	@NotNull(message = "Estilo e obrigatorio" )
+	@Size(min = 5, max = 20, message = "Nome estilo de ter entre {min} e {max} caracteres!")
 	private String nome;
 	
 	@OneToMany(mappedBy = "estilo")
